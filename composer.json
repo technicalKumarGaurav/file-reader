@@ -1,6 +1,6 @@
 {
     "name": "kumar/file-reader",
-    "version": "v1.0.0",
+
     "description": "A PHP application to read and process Excel, CSV, PDF files.",
     "type": "library",
     "autoload": {
