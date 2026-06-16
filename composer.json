@@ -1,0 +1,23 @@
+{
+    "name": "kumar/file-reader",
+    "version": "v1.0.0",
+    "description": "A PHP application to read and process Excel, CSV, PDF files.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Kumar\\FileReader\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kumar Gaurav"
+        }
+    ],
+    "require": {
+        "phpoffice/phpspreadsheet": "^5.8",
+        "smalot/pdfparser": "^2.12"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    }
+}
