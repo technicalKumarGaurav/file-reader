@@ -24,7 +24,7 @@ A lightweight PHP library for reading PDF, Excel, and CSV files through a single
 ## Installation
 
 ```bash
-composer require kumar/file-reader
+composer require technicalkumargaurav/file-reader
 ```
 
 ---
