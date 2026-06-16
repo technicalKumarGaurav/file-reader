@@ -2,6 +2,16 @@
     "name": "kumar/file-reader",
     "description": "A PHP application to read and process Excel, CSV, PDF files.",
     "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "pdf",
+        "excel",
+        "csv",
+        "reader",
+        "parser",
+        "php"
+    ],
+    "homepage": "https://github.com/technicalKumarGaurav/file-reader",
     "autoload": {
         "psr-4": {
             "Kumar\\FileReader\\": "src/"
