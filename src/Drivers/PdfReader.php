@@ -19,14 +19,11 @@ class PdfReader
 
         $text = trim($text);
 
-        $isScanned = strlen($text) < 50;
-
         return ResponseFormatter::make(
             'pdf',
             basename($file),
             [
-                'characters' => strlen($text),
-                'is_scanned' => $isScanned
+                'characters' => strlen($text)
             ],
             [
                 'content' => $text

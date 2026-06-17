@@ -8,23 +8,12 @@ A lightweight PHP library for reading PDF, Excel, and CSV files through a single
 * Read Excel files (`.xls`, `.xlsx`)
 * Read PDF files
 * Unified response format
+* File metadata support
 * Framework independent
 * PSR-4 autoloading
-* Compatible with Core PHP, Laravel, and CodeIgniter
+* Compatible with any Composer-based PHP application, including Laravel and CodeIgniter
 
 ---
-
-## Scanned PDF Detection
-
-```php
-$reader = new Reader();
-
-$result = $reader->read('sample.pdf');
-
-if ($result['meta']['is_scanned']) {
-    echo 'OCR required';
-}
-```
 
 ## Requirements
 
@@ -74,7 +63,11 @@ Response:
         'rows' => 3,
         'columns' => 3
     ],
-    'data' => [...]
+    'data' => [
+        ['id', 'name', 'email'],
+        ['1', 'Gaurav', 'test@test.com'],
+        ['2', 'Ram', 'ram@test.com']
+    ]
 ]
 ```
 
@@ -128,6 +121,22 @@ Response:
 
 ---
 
+## Error Handling
+
+```php
+try {
+    $result = $reader->read('sample.pdf');
+
+    print_r($result);
+
+} catch (\Exception $e) {
+
+    echo $e->getMessage();
+}
+```
+
+---
+
 ## Supported File Types
 
 | Extension | Supported |
@@ -170,15 +179,15 @@ src/
 
 ### v1.1.0
 
-* File Metadata
+* Improved PDF Metadata
+* File Existence Validation
+* Better Error Handling
+
+### Future
+
+* OCR Support for Scanned PDFs
+* DOCX Reader
 * JSON Export
-* File Validation
-
-### v2.0.0
-
-* Laravel Integration
-* CodeIgniter Integration
-* DOCX Support
 * Streaming Support
 
 ---

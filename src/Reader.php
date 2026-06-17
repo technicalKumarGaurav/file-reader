@@ -9,15 +9,14 @@ use Kumar\FileReader\Exceptions\UnsupportedFileException;
 
 class Reader
 {
-    private array $config;
-
-    public function __construct(array $config = [])
+    public function read(string $file): array
     {
-        $this->config = $config;
-    }
+        if (!file_exists($file)) {
+            throw new \InvalidArgumentException(
+                "File not found: {$file}"
+            );
+        }
 
-    public function read(string $file)
-    {
         $extension = strtolower(
             pathinfo($file, PATHINFO_EXTENSION)
         );
@@ -30,8 +29,7 @@ class Reader
 
             'pdf' => (new PdfReader())->read($file),
 
-            default =>
-            throw new UnsupportedFileException(
+            default => throw new UnsupportedFileException(
                 "Unsupported file type: {$extension}"
             )
         };
