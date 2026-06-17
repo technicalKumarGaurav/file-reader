@@ -6,6 +6,8 @@ use Kumar\FileReader\Drivers\CsvReader;
 use Kumar\FileReader\Drivers\ExcelReader;
 use Kumar\FileReader\Drivers\PdfReader;
 use Kumar\FileReader\Exceptions\UnsupportedFileException;
+use Kumar\FileReader\Helpers\PreviewGenerator;
+use Kumar\FileReader\Helpers\HtmlGenerator;
 
 class Reader
 {
@@ -33,5 +35,25 @@ class Reader
                 "Unsupported file type: {$extension}"
             )
         };
+    }
+
+    public function preview(string $file): array
+    {
+        $result = $this->read($file);
+
+        return PreviewGenerator::generate($result);
+    }
+
+    public function toHtml(
+        string $file,
+        array $options = []
+    ): string {
+
+        $preview = $this->preview($file);
+
+        return HtmlGenerator::generate(
+            $preview,
+            $options
+        );
     }
 }

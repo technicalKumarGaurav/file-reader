@@ -6,17 +6,11 @@ use Kumar\FileReader\Reader;
 
 $reader = new Reader();
 
-echo json_encode(
-    $reader->read('samples/sample.csv'),
-    JSON_PRETTY_PRINT
+echo $reader->toHtml(
+    'samples/sample.csv',
+    [
+        'framework' => 'bootstrap',
+        'responsive' => true,
+        'id' => 'myTable'
+    ]
 );
-
-// echo json_encode(
-//     $reader->read('samples/sample.xls'),
-//     JSON_PRETTY_PRINT
-// );
-
-// echo json_encode(
-//     $reader->read('samples/sample.pdf'),
-//     JSON_PRETTY_PRINT
-// );
