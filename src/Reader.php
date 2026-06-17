@@ -9,6 +9,13 @@ use Kumar\FileReader\Exceptions\UnsupportedFileException;
 
 class Reader
 {
+    private array $config;
+
+    public function __construct(array $config = [])
+    {
+        $this->config = $config;
+    }
+
     public function read(string $file)
     {
         $extension = strtolower(

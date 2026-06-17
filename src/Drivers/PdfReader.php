@@ -17,14 +17,19 @@ class PdfReader
 
         $text = preg_replace('/\s+/', ' ', $text);
 
+        $text = trim($text);
+
+        $isScanned = strlen($text) < 50;
+
         return ResponseFormatter::make(
             'pdf',
             basename($file),
             [
-                'characters' => strlen($text)
+                'characters' => strlen($text),
+                'is_scanned' => $isScanned
             ],
             [
-                'content' => trim($text)
+                'content' => $text
             ]
         );
     }

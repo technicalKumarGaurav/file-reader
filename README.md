@@ -14,6 +14,18 @@ A lightweight PHP library for reading PDF, Excel, and CSV files through a single
 
 ---
 
+## Scanned PDF Detection
+
+```php
+$reader = new Reader();
+
+$result = $reader->read('sample.pdf');
+
+if ($result['meta']['is_scanned']) {
+    echo 'OCR required';
+}
+```
+
 ## Requirements
 
 * PHP 8.1+
