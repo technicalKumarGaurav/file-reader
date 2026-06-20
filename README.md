@@ -7,6 +7,8 @@ A lightweight PHP library for reading and extracting data from PDF, Excel, and C
 - Read CSV files
 - Read Excel files (`.xls`, `.xlsx`)
 - Read PDF files
+- Export data to CSV
+- Export data to Excel
 - Unified response format
 - Preview extracted data
 - Generate HTML tables
@@ -116,6 +118,46 @@ Response:
         'content' => 'PDF content...'
     ]
 ]
+```
+
+---
+
+## Export CSV
+
+```php
+$result = $reader->read('sample.xlsx');
+
+$reader->exportCsv(
+    $result,
+    'exports/output.csv'
+);
+```
+
+---
+
+## Export Excel
+
+```php
+$result = $reader->read('sample.csv');
+
+$reader->exportExcel(
+    $result,
+    'exports/output.xlsx'
+);
+```
+
+---
+
+## Skip First Column
+
+```php
+$reader->exportCsv(
+    $result,
+    'exports/output.csv',
+    [
+        'skip_first_column' => true
+    ]
+);
 ```
 
 ---
@@ -254,6 +296,10 @@ src/
 │   ├── ExcelReader.php
 │   └── PdfReader.php
 │
+├── Exporters/
+│   ├── CsvExporter.php
+│   └── ExcelExporter.php
+│
 ├── Exceptions/
 │   └── UnsupportedFileException.php
 │
@@ -290,13 +336,20 @@ src/
 - Responsive Tables
 - Row Limiting
 
+### v1.3.0
+
+- CSV Export Support
+- Excel Export Support
+- Skip First Column Option
+- Export Validation
+
 ### Future
 
 - OCR Support for Scanned PDFs
 - DOCX Reader
-- JSON Export
-- Excel Export
-- CSV Export
+- Export Toolbar
+- Print Support
+- DataTables Integration
 
 ---
 

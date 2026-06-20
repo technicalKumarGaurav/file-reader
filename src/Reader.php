@@ -8,6 +8,10 @@ use Kumar\FileReader\Drivers\PdfReader;
 use Kumar\FileReader\Exceptions\UnsupportedFileException;
 use Kumar\FileReader\Helpers\PreviewGenerator;
 use Kumar\FileReader\Helpers\HtmlGenerator;
+use Kumar\FileReader\Exporters\CsvExporter;
+use Kumar\FileReader\Exporters\ExcelExporter;
+
+
 
 class Reader
 {
@@ -53,6 +57,32 @@ class Reader
 
         return HtmlGenerator::generate(
             $preview,
+            $options
+        );
+    }
+
+    public function exportCsv(
+        array $result,
+        string $outputFile,
+        array $options = []
+    ): bool {
+
+        return CsvExporter::export(
+            $result,
+            $outputFile,
+            $options
+        );
+    }
+
+    public function exportExcel(
+        array $result,
+        string $outputFile,
+        array $options = []
+    ): bool {
+
+        return ExcelExporter::export(
+            $result,
+            $outputFile,
             $options
         );
     }
