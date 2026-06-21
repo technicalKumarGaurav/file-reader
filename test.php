@@ -6,16 +6,35 @@ use Kumar\FileReader\Reader;
 
 $reader = new Reader();
 
-$result = $reader->read(
-    'samples/sample.csv'
-);
+// echo $reader->toHtml(
+//     'samples/sample.xls',
+//     [
+//         'toolbar'   => true,
+//         'csv_url'   => '/export/csv',
+//         'excel_url' => '/export/excel',
+//         'print'     => true
+//     ]
+// );
 
-$status = $reader->exportExcel(
-    $result,
-    'exports/output.xlsx',
+echo $reader->toHtml(
+    'samples/sample.xls',
     [
-        'skip_first_column' => true
+        'framework' => 'bootstrap',
+
+        'toolbar' => true,
+
+        'csv_url' => '/export/csv',
+
+        'excel_url' => '/export/excel',
+
+        'show_csv' => true,
+
+        'show_excel' => true,
+
+        'show_print' => true,
+
+        'new_tab' => true
     ]
 );
 
-var_dump($status);
+

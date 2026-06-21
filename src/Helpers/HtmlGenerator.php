@@ -2,11 +2,14 @@
 
 namespace Kumar\FileReader\Helpers;
 
+use Kumar\FileReader\Helpers\ToolbarGenerator;
+
 class HtmlGenerator
 {
     public static function generate(
         array $preview,
         array $options = []
+
     ): string {
 
         $class = $options['class'] ?? '';
@@ -18,6 +21,9 @@ class HtmlGenerator
         $responsive = $options['responsive'] ?? false;
 
         $limit = $options['limit'] ?? null;
+        $toolbar =
+            $options['toolbar']
+            ?? false;
 
         if ($framework === 'bootstrap') {
 
@@ -107,7 +113,16 @@ class HtmlGenerator
                     '</div>';
             }
 
+            if ($toolbar) {
+
+                $html =
+                    ToolbarGenerator::generate(
+                        $options
+                    ) . $html;
+            }
+
             return $html;
+
         }
 
         if (isset($preview['content'])) {
